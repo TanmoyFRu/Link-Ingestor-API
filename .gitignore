@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual Environment
+Ingestor-env/
+
+# IDE
+.vscode/
+.idea/
+
+# Build/Test
+build/
+dist/
+*.egg-info/
+.coverage
+htmlcov/
+
+# Logs
+*.log
+
+# Local Settings
+.env
+.env.example
+
+# OS metadata
+.DS_Store
+Thumbs.db
