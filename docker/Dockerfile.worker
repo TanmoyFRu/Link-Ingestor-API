@@ -15,7 +15,8 @@ COPY pyproject.toml ./
 
 # Install Python dependencies
 RUN pip install --no-cache-dir --upgrade pip && \
-    pip install --no-cache-dir -e .
+    pip install --no-cache-dir -e . && \
+    pip install --no-cache-dir celery redis
 
 # Copy application code
 COPY . .
@@ -27,7 +28,7 @@ USER app
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 \
-    CMD celery -A app.worker.tasks inspect ping || exit 1
+    CMD celery -A app.worker.tasks inspect ping -d celery@$HOSTNAME || exit 1
 
 # Run the worker
 CMD ["celery", "-A", "app.worker.tasks", "worker", "--loglevel=info"]
