@@ -127,7 +127,6 @@ flowchart LR
 git clone https://github.com/TanmoyFRu/Link-Ingestor-API.git
 cd link-ingestor
 cp env.example .env
-# Edit .env with your configuration
 ```
 
 ### 2. Start with Docker Compose
