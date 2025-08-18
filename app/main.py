@@ -3,8 +3,9 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 import structlog
 from app.core.config import settings
-from app.api.v1.routers import ingest
+from app.api.v2.routers import ingest
 import time
+# from prometheus_fastapi_instrumentator import Instrumentator
 
 # Configure structured logging
 structlog.configure(
@@ -35,6 +36,9 @@ app = FastAPI(
     docs_url="/docs",
     redoc_url="/redoc"
 )
+
+# Instrument the app with Prometheus
+# Instrumentator().instrument(app).expose(app)
 
 # Add CORS middleware
 app.add_middleware(
@@ -103,5 +107,6 @@ async def root():
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)
+
 
 

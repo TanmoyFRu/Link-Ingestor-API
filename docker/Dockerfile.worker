@@ -33,3 +33,4 @@ HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 \
 # Run the worker
 CMD ["celery", "-A", "app.worker.tasks", "worker", "--loglevel=info"]
 
+
